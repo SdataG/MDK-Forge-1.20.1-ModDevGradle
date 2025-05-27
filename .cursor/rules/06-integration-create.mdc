@@ -1,0 +1,13 @@
+---
+description: 
+globs: src/main/java/**/integration/create/*.java, src/main/java/**/managers/LogisticsManager.java, src/main/java/**/managers/WarfareManager.java
+alwaysApply: false
+---
+This rule governs interaction with the Create mod API for "FTBKingdoms", focusing on logistics and siege equipment.
+
+**Key APIs & Usage:** Logistics & Shipments, Siege Equipment definitions, Create:Numismatics integration.
+
+**Guidance:**
+*   `LogisticsManager` for trade.
+
+*   `WarfareManager` for siege rules.

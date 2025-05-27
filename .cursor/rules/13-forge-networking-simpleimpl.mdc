@@ -1,0 +1,20 @@
+---
+description: 
+globs: src/main/java/**/network/**/*.java, src/main/java/**/*Mod.java
+alwaysApply: false
+---
+This rule applies to custom network messages using Forge's `SimpleNetworkWrapper` for "FTBKingdoms".
+
+**Network Setup Class (`ModMessages.java`):**
+*   `PROTOCOL_VERSION = "1"`.
+*   `public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(FTBKingdoms.MOD_ID, "main"), ...);` [26]
+*   Packet registration method called in `FMLCommonSetupEvent`. [33]
+
+**Packet Class Structure:** Constructor, `toBytes`, `fromBytes` (constructor taking `FriendlyByteBuf`), `handle` method with `enqueueWork`. [26]
+**Sending Packets:** `INSTANCE.send(PacketDistributor.PLAYER.with(...), ...);`, `INSTANCE.sendToServer(...);`.
+
+**Specific Packets for "FTBKingdoms":**
+*   `S2CUpdateKingdomDataPacket`, `C2SRequestKingdomActionPacket`
+*   ...(and all other packets listed previously, names are generic enough)...
+
+*   `S2CSyncConfigPacket`

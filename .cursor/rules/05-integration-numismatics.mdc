@@ -1,0 +1,14 @@
+---
+description: 
+globs: src/main/java/**/integration/numismatics/*.java, src/main/java/**/managers/EconomyManager.java, src/main/java/**/block/entity/TreasuryBlockEntity.java
+alwaysApply: false
+---
+This rule governs interaction with the Numismatics API for currency and accounts in "FTBKingdoms".
+
+**Key APIs & Usage:** Account Management, Treasury Block link, Upkeep & Taxes.
+**Error Handling:** Crucial for economic operations.
+
+**Guidance:**
+*   Centralize interactions in `EconomyManager`.
+
+*   Robust logging for transactions.

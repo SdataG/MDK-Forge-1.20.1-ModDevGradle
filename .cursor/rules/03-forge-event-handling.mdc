@@ -1,0 +1,26 @@
+---
+description: 
+globs: src/main/java/**/event/*.java, src/main/java/**/*Mod.java, src/main/java/**/managers/*.java
+alwaysApply: false
+---
+This rule applies to handling game events in the "FTBKingdoms" mod.
+
+**Tasks & Conventions:**
+*   **Event Buses:** Mod Lifecycle (`FMLJavaModLoadingContext.get().getModEventBus()`), General Game Events (`MinecraftForge.EVENT_BUS`). [7, 16, 27]
+*   **Subscribing Methods:** Use `@SubscribeEvent`. [7, 16, 27]
+*   Class annotation: `@Mod.EventBusSubscriber(modid = FTBKingdoms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD/FORGE)`. [16, 23]
+*   Client-side: `@Mod.EventBusSubscriber(modid = FTBKingdoms.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)`. [23]
+*   **Event Priority:** Use `EventPriority`. [7, 27]
+*   **Cancelable Events & Results.** [23, 27]
+
+**Mod-Specific Event Handling for "FTBKingdoms":**
+*   **Player Events:** `PlayerLoggedInEvent`, `PlayerLoggedOutEvent`, `PlayerInteractEvent`, `AttackEntityEvent`, `LivingDamageEvent`, `LivingDeathEvent`.
+*   **Block Events:** `BlockEvent.BreakEvent`, `ExplosionEvent.Detonate`.
+*   **Tick Events:** `TickEvent.ServerTickEvent`, `TickEvent.PlayerTickEvent` (use judiciously for upkeep, jail sentences).
+*   **FTB Chunks/Teams API Events:** `TeamEvent`, `ChunkEvent`.
+*   **Chunk Load/Unload Events.**
+
+**Guidance:**
+*   Delegate complex logic to Manager classes.
+
+*   Ensure server-side checks.

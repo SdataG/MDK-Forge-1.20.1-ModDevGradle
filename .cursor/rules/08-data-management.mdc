@@ -1,0 +1,19 @@
+---
+description: 
+globs: src/main/java/**/data/*.java, src/main/java/**/capability/*.java, src/main/java/**/managers/*Manager.java
+alwaysApply: false
+---
+This rule defines how persistent data for "FTBKingdoms" (kingdoms, claims, players, etc.) is managed.
+
+**`SavedData` (World-Specific):**
+*   `KingdomsSavedData.java` (or `FTBKingdomsWorldData.java`): Stores map of FTB Team ID -> Kingdom object. Contains treasury ID, claim IDs, roles, war status, rules, logs.
+*   `ClaimsSavedData.java`: Map of Your Claim ID -> ClaimDetails (FTB Chunk link, upkeep, sub-claims).
+*   `JailSavedData.java`: Jail locations, prisoner data.
+
+**`Capability` (Player-Specific):**
+*   `PlayerBountyCapability.java`: Player's bounty.
+*   Attach to `ServerPlayer`, sync to client if needed.
+
+**Serialization:** Use `CompoundTag`.
+
+**Access:** Managers access/modify, ensuring saving.

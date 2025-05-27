@@ -1,0 +1,13 @@
+---
+description: 
+globs: src/main/java/**/managers/JailManager.java, src/main/java/**/block/entity/JailBlockEntity.java, src/main/java/**/capability/PlayerBountyCapability.java
+alwaysApply: false
+---
+This rule covers the jail, bandit, and bounty system for "FTBKingdoms".
+
+**Jail Setup:** Designated areas/blocks, `JailBlockEntity`, `JailManager`.
+**Prisoner Management (`JailManager`):** Jailing, sentence duration, restrictions, escape mechanics, bounty payment, pardons.
+**Bounty System (`PlayerBountyCapability`, `JailManager`):** Setting bounties, automatic increases for crimes, outlaws.
+**Event Logging:** All jail actions.
+
+```    *Tag jail manager: `@src/main/java/com/yourusername/ftbkingdoms/managers/JailManager.java`*

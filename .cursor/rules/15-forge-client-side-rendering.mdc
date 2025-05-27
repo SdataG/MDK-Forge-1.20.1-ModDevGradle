@@ -1,0 +1,15 @@
+---
+description: 
+globs: src/main/java/**/client/renderer/**/*.java, src/main/java/**/client/gui/**/*.java, src/main/java/**/client/ClientSetup.java, src/main/java/**/client/*Events.java
+alwaysApply: false
+---
+This rule focuses on client-side rendering aspects for "FTBKingdoms".
+
+**Client Setup Event (`FMLClientSetupEvent`):** Register `MenuScreens`, `EntityRenderers`, `BlockEntityRenderers`.
+**Block Entity Renderers (`BlockEntityRenderer`):** Implement `render()`, register with `BlockEntityRenderers.register(ModBlockEntities.YOUR_BLOCK_ENTITY.get(), YourBER::new);`.
+**Entity Renderers (`EntityRenderer`):** Register with `EntityRenderers.register(...)`. [22]
+**Custom GUI Screens (`Screen`, `AbstractContainerScreen`):** Register with `MenuScreens.register(...)`.
+**Model Layers (`EntityModelLayer`):** Define constants (e.g., `new ModelLayerLocation(new ResourceLocation(FTBKingdoms.MOD_ID, "example_layer"), "main")`), register definitions in `EntityRenderersEvent.RegisterLayerDefinitions`. [22]
+
+
+**Consider custom renderers for "FTBKingdoms":** Treasury Block, Jail Blocks, Claim visualization overlays.

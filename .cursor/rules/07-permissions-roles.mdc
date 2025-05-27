@@ -1,0 +1,17 @@
+---
+description: 
+globs: src/main/java/**/managers/RoleManager.java, src/main/java/**/data/KingdomData.java, src/main/java/**/integration/permission/*.java
+alwaysApply: false
+---
+This rule covers implementation of roles, permissions, and governance in "FTBKingdoms".
+
+**System Design:**
+*   **Internal Permission Nodes:** e.g., `ftbkingdoms.claim.create`, `ftbkingdoms.treasury.withdraw`.
+*   **RoleManager:** Manages default and custom roles within a kingdom (stored in `KingdomData`).
+*   **FTB Ranks / LuckPerms Integration:** For assigning broad ranks; "FTBKingdoms" internal roles are primary for specific permissions.
+*   **Granular Permissions:** Custom per-claim permissions.
+*   **Governance:** Logic in `KingdomManager` / `RoleManager`.
+
+**Guidance:**
+
+*   `PermissionHelper.hasPermission(ServerPlayer player, String internalPermissionNode)`.

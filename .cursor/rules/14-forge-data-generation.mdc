@@ -1,0 +1,18 @@
+---
+description: 
+globs: src/main/java/**/datagen/**/*.java, src/main/java/**/*Mod.java
+alwaysApply: false
+---
+This rule covers generation of data assets for "FTBKingdoms". Data generation is preferred. [3, 9, 13]
+
+**Main Data Generator Setup:** Subscribe to `GatherDataEvent`. `DataGenerator generator = event.getGenerator(); ... generator.addProvider(event.includeClient(), new MyBlockStateProvider(packOutput, FTBKingdoms.MOD_ID, existingFileHelper));` [13]
+**Provider Types:** `BlockStateProvider`, `ItemModelProvider`, `LanguageProvider`, `SoundDefinitionsProvider`, `RecipeProvider`, `LootTableProvider`, `TagsProvider`. [13]
+**Location:** `datagen` sub-package.
+**Running:** `runData` Gradle task. [13]
+
+**Data Generation for "FTBKingdoms":**
+*   **Blocks:** Treasury block, Jail Wall/Door/Controller blocks.
+*   **Items:** Claim tool, Siege components, keys.
+*   **LanguageProvider:** All UI text, names, messages for "FTBKingdoms".
+
+*   **SoundDefinitionsProvider:** Custom sounds.

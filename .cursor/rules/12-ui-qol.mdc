@@ -1,0 +1,13 @@
+---
+description: 
+globs: src/main/java/**/client/gui/**/*.java, src/main/java/**/network/packet/*UIPacket.java
+alwaysApply: false
+---
+This rule focuses on UI elements and Quality of Life features for "FTBKingdoms".
+
+**FTB Teams UI Leverage.**
+**Custom Menus (`Screen`, `AbstractContainerScreen`):** Kingdom Menu with tabs (Members, Treasury, Chat, Roles, Rules, Logs, Leaderboards). Data synced via packets.
+**Notifications:** Client-side toasts/chat for alerts.
+**Citizen Chat:** Custom kingdom chat channel.
+
+**Leaderboards:** Compiled server-side, synced to clients.

@@ -1,0 +1,12 @@
+---
+description: 
+globs: src/main/java/**/managers/WarfareManager.java, src/main/java/**/event/CombatEventHandler.java, src/main/java/**/data/*SavedData.java
+alwaysApply: false
+---
+This rule details warfare, raiding, and block protection mechanics for "FTBKingdoms".
+
+**War Declarations:** UI, managed by `WarfareManager`, stored in `KingdomData`.
+**Block Durability & Protection:** Increased durability in claims, chest protection, explosive mechanics modification.
+**Siege/Raid Mechanics:** `WarfareManager` for raid status, treasury draining, raid warnings.
+
+**Bounty System (Warfare Aspect):** Placing bounties, increased for hostile acts.

@@ -1,0 +1,22 @@
+---
+description: 
+globs: src/main/java/**/integration/ftb/*.java, src/main/java/**/managers/*Manager.java, src/main/java/**/event/*EventHandler.java
+alwaysApply: false
+---
+This rule governs interaction with FTB Chunks and FTB Teams APIs for the "FTBKingdoms" mod.
+
+**Key APIs & Usage:** FTBTeamsAPI, FTBChunksAPI (as detailed previously).
+
+**Land & Claim System Specifics for "FTBKingdoms":**
+*   **Claiming:** Leverage FTB Chunks UI. "FTBKingdoms" augments this with upkeep and custom logic.
+*   **Ownership:** Tied to FTB Teams.
+*   **Upkeep & Auto-Unclaim:** Custom logic in "FTBKingdoms", using FTBChunksAPI to unclaim.
+*   **Sub-Claims:** Custom data overlay for "FTBKingdoms" on FTB Chunks claims.
+*   **Outpost Claims:** Special flag/property managed by "FTBKingdoms".
+*   **UI Integration:** Use FTB Teams UI, add custom tabs/menus for "FTBKingdoms" features.
+
+**Guidance:**
+*   Wrap API calls in helper methods.
+*   Handle FTB mod absence (though they are dependencies).
+
+*   Listen to FTB events.

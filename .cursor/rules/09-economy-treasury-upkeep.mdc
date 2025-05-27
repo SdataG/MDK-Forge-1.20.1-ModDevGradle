@@ -1,0 +1,12 @@
+---
+description: 
+globs: src/main/java/**/managers/EconomyManager.java, src/main/java/**/block/entity/TreasuryBlockEntity.java, src/main/java/**/data/*SavedData.java  Content: (As detailed previously, context is "FTBKingdoms")
+alwaysApply: false
+---
+This rule covers the treasury, upkeep, and general economic flow for "FTBKingdoms".
+
+**Treasury Block (`TreasuryBlockEntity.java`):** Links to Numismatics account, UI interaction, immortal.
+**EconomyManager:** Handles upkeep deductions, communicates with `ClaimManager`, manages donations, bounty payments, sub-claim taxes.
+**Upkeep Logic:** Initial cost, weekly upkeep, claim loss/shrink on failure.
+
+**Event Logs:** Log all significant transactions.

@@ -1,0 +1,23 @@
+---
+description: 
+globs: src/main/java/**/init/*.java, src/main/java/**/core/Registration.java, src/main/java/**/*Mod.java
+alwaysApply: false
+---
+This rule governs the registration of game elements like Blocks, Items, Block Entities, etc., in the "FTBKingdoms" mod.
+
+**Tasks & Conventions:**
+
+*   **Use `DeferredRegister`:** Recommended method. [8]
+*   Create separate `DeferredRegister` instances for each registry type (e.g., `ForgeRegistries.BLOCKS`, `ForgeRegistries.ITEMS`).
+    *   Example: `public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, FTBKingdoms.MOD_ID);`
+*   **Static `RegistryObject` Fields:** Define `public static final RegistryObject<T>` fields.
+    *   Example: `public static final RegistryObject<Block> EXAMPLE_BLOCK = BLOCKS.register("example_block", () -> new Block(BlockBehaviour.Properties.of()));` [8, 19]
+*   **Register to Mod Event Bus:** The `DeferredRegister` instance must be registered in the main mod class constructor.
+    *   Example: `BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());` [8]
+*   **Initialization Classes:** Group `DeferredRegister`s into dedicated classes (e.g., `BlockInit.java`, `ItemInit.java`). [28]
+*   **Resource Locations:** Registry names must be lowercase, use underscores, and be unique for `ftbkingdoms`.
+
+**Code Generation Guidance:**
+*   When creating new blocks/items, set up `DeferredRegister` and `RegistryObject` structure.
+
+*   Ensure registration call is in the main mod constructor.

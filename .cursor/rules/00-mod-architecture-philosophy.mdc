@@ -1,0 +1,29 @@
+---
+description: 
+globs: *.java, *.toml, *.json
+alwaysApply: false
+---
+This rule outlines the overarching design philosophy for the "FTBKingdoms" mod.
+
+**Core Principles:**
+
+*   **Mod ID:** `ftbkingdoms` (ensure this is used consistently for all resources, registries, and network channels).
+*   **Forge Version:** Minecraft 1.20.1, using the corresponding Forge version (e.g., 47.x.x). Adhere strictly to its API and conventions. [3, 9, 10]
+*   **Modularity:** Design systems (Claims, Economy, Warfare, Roles, etc.) as distinct managers or handlers where possible. This promotes separation of concerns and easier maintenance. (e.g., `KingdomManager.java`, `ClaimManager.java`, `TreasuryManager.java`).
+*   **Integration Focus:** This mod heavily integrates with FTB Chunks, FTB Teams, Numismatics, and Create. Prioritize using their APIs correctly and efficiently. [1, 2, 3, 4, 5, 6, 7]
+    *   Avoid reimplementing features already provided by these core mods unless absolutely necessary for deeper customization.
+    *   Clearly document API interactions and assumptions.
+*   **Data Management:**
+    *   Use Forge's `Capability` system for attaching persistent data to entities (players) or other objects where appropriate (e.g., player-specific settings, bounty status). [11]
+    *   Use `SavedData` for world-specific persistent data (e.g., kingdom data, claim data, treasury accounts). [11]
+    *   Ensure data is loaded and saved robustly.
+*   **Server-Authority:** Critical game logic (economy, claims, warfare outcomes) MUST be server-authoritative to prevent cheating. Client-side predictions can be used for responsiveness but must be validated by the server.
+*   **Configuration:** Provide comprehensive server-side configurations (e.g., upkeep costs, siege mechanics parameters, default role permissions) using Forge's config system.
+*   **User Experience (UX):**
+    *   Leverage FTB Chunks/Teams UI elements where possible for consistency. [1, 2]
+    *   Custom UIs should be intuitive and provide clear feedback.
+    *   Notifications and logs are crucial for player understanding.
+*   **Code Quality:** Follow Java best practices, use meaningful names, comment complex logic, and aim for maintainable code. Use the `LOGGER` for diagnostics.
+
+
+*   **Asynchronous Operations:** For potentially long-running operations or those not needing immediate main-thread execution, consider asynchronous tasks, ensuring thread safety. Use `LogicalSidedProvider.WORKQUEUE.enqueue(...)` or `CompletableFuture` for off-thread work that needs to interact with Minecraft later.

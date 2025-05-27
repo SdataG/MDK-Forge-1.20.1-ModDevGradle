@@ -1,0 +1,40 @@
+---
+description: 
+globs: src/main/java/**/*Mod.java, src/main/resources/META-INF/mods.toml
+alwaysApply: false
+---
+This rule applies to the main mod class and essential configuration for "FTBKingdoms".
+
+**Tasks & Conventions:**
+
+*   **Main Class (`@Mod("ftbkingdoms")`):**
+    *   Static `MOD_ID = "ftbkingdoms"`.
+    *   Static `LOGGER` instance (e.g., `LogUtils.getLogger()`).
+    *   Constructor:
+        *   Register event listeners to `FMLJavaModLoadingContext.get().getModEventBus()` for mod lifecycle events (`RegisterEvent`, `FMLCommonSetupEvent`, `FMLClientSetupEvent`, `GatherDataEvent`).
+        *   Register event listeners to `MinecraftForge.EVENT_BUS` for general game events.
+        *   Initialize and register DeferredRegisters for blocks, items, block entities, etc. (e.g., `BlockInit.BLOCKS.register(modEventBus);`, `ItemInit.ITEMS.register(modEventBus);`).
+        *   Initialize core manager instances if they need early setup or event bus registration.
+*   **`FMLCommonSetupEvent`:**
+    *   Register network packets (`ModMessages.register();`).
+    *   Initialize capabilities (`CapabilityRegistry.register();`).
+    *   Any setup logic that needs to run after registries are populated but before worlds load.
+*   **`mods.toml`:**
+    *   `modLoader="javafml"`, `loaderVersion="[47,)"`.
+    *   Correct `modId = "ftbkingdoms"`.
+    *   Dependencies: `minecraft="[1.20.1,1.21)"`, `forge="[47.x.x,)"` (use specific Forge version), `ftbteams`, `ftbchunks`, `create:numismatics`, `create`. Ensure correct versioning for these dependencies. [5]
+*   **Package Structure:**
+    *   `com.yourusername.ftbkingdoms`
+        *   `block/`, `item/`, `entity/`
+        *   `capability/`
+        *   `client/` (gui, renderer, ClientEvents, ClientSetup)
+        *   `config/`
+        *   `data/` (SavedData classes like KingdomData, ClaimData)
+        *   `datagen/`
+        *   `event/` (Forge and Mod bus event handlers)
+        *   `init/` (BlockInit, ItemInit, ModBlockEntities, ModMenuTypes, etc.)
+        *   `integration/` (ftb, numismatics, create specific helpers)
+        *   `managers/` (KingdomManager, ClaimManager, EconomyManager, RoleManager, WarfareManager, JailManager, LogisticsManager)
+        *   `network/` (ModMessages, packet classes)
+
+        *   `util/`
